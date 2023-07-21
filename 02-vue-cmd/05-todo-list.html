@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue3/vue.js"></script>
+  </head>
+  <body>
+    <div id="box">
+      <!-- 如果没有参数，可以省略括号 -->
+      <!-- <input type="text" @input="handleInput"> -->
+      <!-- 双向绑定v-model -->
+      <input type="text" v-model="mytext" />
+      <button @click="handleAdd">add</button>
+
+      <ul>
+        <li v-for="item in dataList">{{ item }}</li>
+      </ul>
+    </div>
+    <script>
+      obj = {
+        data() {
+          return {
+            mytext: "",
+            dataList: ["a", "b", "c"],
+          };
+        },
+        methods: {
+          handleAdd() {
+            this.dataList.push(this.mytext)
+          },
+          //   handleInput(evt) {
+          //     this.mytext = evt.target.value
+          //   }
+        },
+      };
+      Vue.createApp(obj).mount("#box");
+    </script>
+  </body>
+</html>

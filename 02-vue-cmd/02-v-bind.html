@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue3/vue.js"></script>
+    <style>
+        .red{
+            background-color: red;
+        }
+        .yellow{
+            background-color: yellow;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <!-- 绑定 -->
+        <div v-bind:class="color">111</div>
+        <div :class="isLogin ? 'red' : 'yellow'">222</div>
+        <!-- <img :src="url" alt="" width="300"> -->
+        <img v-bind="imgobj">
+        <button :disabled="isDisabled">click</button>
+    </div>
+    <script>
+      obj = {
+        data() {
+            return {
+                isLogin: false,
+                color: "red", 
+                url:"",
+                isDisabled:false,
+                imgobj: {
+                    width: 300,
+                    src: ''
+                }
+            }
+        }
+      };
+      const app = Vue.createApp(obj).mount("#box");
+    </script>
+  </body>
+</html>

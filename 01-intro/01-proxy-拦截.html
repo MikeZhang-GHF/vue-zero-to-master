@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Proxy拦截</title>
+</head>
+<body>
+    <script>
+        // ES6 Proxy进行拦截，代理整个对象，
+        // vue2重写defineProperty，
+        // vue3根据浏览器是否支持Proxy，不支持使用vue2拦截
+        const obj = {}
+        var vm = new Proxy(obj, {
+            get(obj, key) {
+                console.log('get')
+                return obj[key]
+            },
+            set(obj, key, value) {
+                console.log('set')
+                obj[key] = value 
+            }
+        })
+    </script>
+</body>
+</html>

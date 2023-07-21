@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue3/vue.js"></script>
+    <style>
+      .red {
+        background-color: red;
+      }
+      .yellow {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <button @click="handleClick()">Click</button>
+      <div v-show="isShow">Show</div>
+      <div v-if="isShow">Created or Deleted</div>
+
+      <ul>
+        <li v-for="item, index in list">{{ item }} --- {{ index }}</li>
+      </ul>
+    </div>
+    <script>
+      obj = {
+        data() {
+          return {
+            myname: "Mike",
+            isShow: true,
+            list: ["a", "b", "c"],
+          };
+        },
+        methods: {
+          handleClick() {
+            (this.myname = "Sherry"), (this.isShow = !this.isShow);
+          },
+        },
+      };
+      Vue.createApp(obj).mount("#box");
+    </script>
+  </body>
+</html>
